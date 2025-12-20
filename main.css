@@ -132,9 +132,9 @@ h6 {
 }
 
 @keyframes php-email-form-loading {
-  0% {
-    transform: rotate(0deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
   100% {
     transform: rotate(360deg);
@@ -143,15 +143,12 @@ h6 {
 
 /* Pulsating Play Button
 ------------------------------*/
-.pulsating-play-btn {
-  width: 94px;
-  height: 94px;
-  background: radial-gradient(var(--accent-color) 50%, color-mix(in srgb, var(--accent-color), transparent 75%) 52%);
-  border-radius: 50%;
-  display: block;
-  position: relative;
-  overflow: hidden;
-}
+.pulsating-play-btn { ... }
+.pulsating-play-btn:before { ... }
+.pulsating-play-btn:after { ... }
+.pulsating-play-btn:hover:before { ... }
+.pulsating-play-btn:hover:after { ... }
+
 
 .pulsating-play-btn:before {
   content: "";
@@ -209,10 +206,9 @@ h6 {
 }
 
 @keyframes pulsate-play-btn {
-  0% {
-    transform: scale(0.6, 0.6);
-    opacity: 1;
-  }
+  0% { transform: scale(0.6, 0.6); opacity: 1; }
+  100% { transform: scale(1, 1); opacity: 0; }
+}
 
   100% {
     transform: scale(1, 1);
@@ -3588,4 +3584,22 @@ section,
   padding-left: 5px;
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
+}
+/* === SEO & PERFORMANCE FIXES === */
+
+/* Prevent layout shift */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Improve text readability (SEO UX signal) */
+p {
+  line-height: 1.7;
+}
+
+/* Reduce heavy transitions */
+* {
+  transition: none !important;
 }
